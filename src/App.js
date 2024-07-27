@@ -3,6 +3,7 @@ import "./App.css";
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Aside from "./Aside/Aside";
+import ProfileComp from "./Components/ProfileComp/ProfileComp";
 
 function App() {
   //   const LoginButton = () => {
@@ -105,7 +106,7 @@ function App() {
   //       </header>
   //     </div>
   // );
-  return <Aside />;
+  return <ProfileComp />;
 }
 
 export default App;
