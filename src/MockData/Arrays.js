@@ -28,7 +28,7 @@ const clinics = [
     {
       name: "Mayfair",
       address: "Corner Sumner Street and Ninth Avenue, 35 Bartlett Rd, Mayfair West, Johannesburg, 2092",
-      tel: "011 837 6206",
+      tel: "011 837 6206,011 837 6206",
       openingTime: "8:00 AM",
       closingTime: "4:00 PM",
       Specialties: [
@@ -45,6 +45,9 @@ const clinics = [
       open24Hours: false,
       email: null,
       website: null,
+      capacity: 25,
+      emergency: true,
+
     },
     {
       name: "Joubert Park",

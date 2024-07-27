@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import Maps from './Components/Maps/Maps';
 import HomePage from "./Pages/HomePage";
+import ClinicProfile from "./Pages/ClinicProfile/ClinicProfile";
 
 
 
@@ -182,7 +183,7 @@ function App() {
   //       </header>
   //     </div>
   // );
-  return <HomePage/>
+  return <ClinicProfile/>
 
 }
 
