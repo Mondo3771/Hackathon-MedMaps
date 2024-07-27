@@ -39,4 +39,11 @@ const formatDateTime = (input) => {
 
 }
 
-export {searchFunction,formatDateTime}
+const setLocalStroge = ({key,value}) => {
+  return localStorage.setItem(key, JSON.stringify(value));
+}
+
+const fetchLocalStroge = ({key}) => {
+  return JSON.parse(localStorage.getItem(key));
+}
+export {searchFunction,formatDateTime, setLocalStroge,fetchLocalStroge}

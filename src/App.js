@@ -147,7 +147,7 @@ function App() {
 //     </div>
 // );
 
-return <HomePage/>
+
   // const AddAHospital = ()=>{
   //  fetch("/api/Hospitals", {
   //     method: 'POST',
@@ -182,6 +182,7 @@ return <HomePage/>
   //       </header>
   //     </div>
   // );
+  return <HomePage/>
 
 }
 
