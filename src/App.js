@@ -58,19 +58,19 @@ const openingTime = formatTime(open);
 const close = new Date();
 close.setHours(14,0,0,0);
 const closingTime = formatTime(close);
-const data = {
-  name :"Example Hospital" ,
-  address:"123 Street Ave",
-  tel :"123456789012" ,
-  openingTime: openingTime,
-  closingTime:closingTime,
-  isClinic:true,
-  public:true,
-  open24Hours:true,
-  email:"ecxample@gmail.com",
-  website:"example.com.ac.za",
-  Specialties:"Orthopedics,Dermatology,Neurology"
-}
+// const data = {
+//   name :"Example Hospital" ,
+//   address:"123 Street Ave",
+//   tel :"123456789012" ,
+//   openingTime: openingTime,
+//   closingTime:closingTime,
+//   isClinic:true,
+//   public:true,
+//   open24Hours:true,
+//   email:"ecxample@gmail.com",
+//   website:"example.com.ac.za",
+//   Specialties:"Orthopedics,Dermatology,Neurology"
+// }
 
 const AddAHospital = ()=>{
  fetch("/api/Hospitals")
