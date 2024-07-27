@@ -5,11 +5,11 @@ import { formatDateTime } from "../../Helpers/helpers";
 
 const Announcements = ({id}) => {
     const ID = 101;
-    formatDateTime(announcements[0].time)
+    const filteredArray = announcements.filter(a => a.id === ID);
 
   return (
     <section className="announcements">
-        {announcements.map((announcement,index) => 
+        {filteredArray.map((announcement,index) => 
         (
         <div className="announcementCard" key={index}>
             <UserCircleIcon width={75}/>
@@ -21,8 +21,6 @@ const Announcements = ({id}) => {
         </div>
         ))
     }
-        
-
     </section>
   )
 }
