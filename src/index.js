@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import {createRoot} from 'react-dom/client';
+// import {createRoot} from 'react-dom/cli
 import { Auth0Provider } from '@auth0/auth0-react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import NewPage from './Sign Up page/CreateClinic';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 console.log(process.env.REACT_APP_AUTH0_CLIENT_ID);
@@ -17,7 +19,9 @@ root.render(
         redirect_uri: window.location.origin,
       }}
     >
-    <App />
+      <Router>
+        <NewPage />
+      </Router>
     </Auth0Provider>
   </React.StrictMode>
 );

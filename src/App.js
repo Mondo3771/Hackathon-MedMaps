@@ -2,6 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from 'react-router-dom';
+
+// in your render method:
+
 // import { fetchLocalStorage, setLocalStorage } from './helpers/helpers';
 
 
@@ -39,29 +43,7 @@ function App() {
       )
     );
   };
-  const data = {
-    clinicId: 4,
-    Capacity: '100',
-    Beds: 50,
-    EmergencyRooms: true,
-    Ailment: "Common Cold"
-};
-
-const UpdateClinic = () => {
-    fetch(`/api/DailyUpdates`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data), 
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch((error)=> {
-        console.error("Error:",error);
-    })
-}
-
+ 
   return (
     <div className="App">
       <header className="App-header">
@@ -69,7 +51,7 @@ const UpdateClinic = () => {
         <p>
           Edit <code>src/App.js</code> and save to relo d.
         </p>
-        <button onClick={UpdateClinic}>Call API</button>
+        {/* <button onClick={UpdateClinic}>Call API</button> */}
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -81,6 +63,7 @@ const UpdateClinic = () => {
         <LoginButton />
         <LogoutButton />
         <Profile />
+        <Link to="/newpage">Go to the new page</Link>
       </header>
     </div>
   );

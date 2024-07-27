@@ -126,3 +126,25 @@ const PostNotification = () => {
     console.error("Error:",error);
   })
 }
+ data = {
+  clinicId: 4,
+  Capacity: '100',
+  Beds: 50,
+  EmergencyRooms: true,
+  Ailment: "Common Cold"
+};
+
+const UpdateClinic = () => {
+  fetch(`/api/DailyUpdates`, {
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data), 
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch((error)=> {
+      console.error("Error:",error);
+  })
+}
