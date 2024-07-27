@@ -105,7 +105,7 @@ const UpdateAHospital = () => {
   .then(data => console.log(data))
   .catch((error)=> console.error('Error:',error));
 }
-
+// this is what it should look like
 // data = {
 //   title:"Tuesday Notification",
 //   details:"We have the pills",

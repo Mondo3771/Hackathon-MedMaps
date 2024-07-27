@@ -1,3 +1,5 @@
+const { sql, config } = require('../dbconfig');
+
 module.exports = async function (context, req) {
     try {
         const pool = await sql.connect(config);
@@ -10,7 +12,7 @@ module.exports = async function (context, req) {
      result = await pool.request()
         .input('clinicId', sql.Int, clinicId)
         .query(`
-           SELECT Capacity, Beds, EmergencyRooms, Alilement
+           SELECT Capacity, Beds, EmergencyRooms, Ailment
 FROM Clinic
 WHERE clinicId = @clinicId
         `);
@@ -20,18 +22,18 @@ WHERE clinicId = @clinicId
     body:result.recordset
     }
               break;
-              case 'PUT':
+            case 'PUT':
     let Data = req.body;
     const updateResult = await pool.request()
         .input('clinicId', sql.Int, Data.clinicId)
-        .input('Capacity', sql.varchar, Data.Capacity)
+        .input('Capacity', sql.VarChar, Data.Capacity)
         .input('Beds', sql.Int, Data.Beds)
-        .input('EmergencyRooms', sql.bit, Data.EmergencyRooms)
+        .input('EmergencyRooms', sql.Bit, Data.EmergencyRooms)
         .input('Ailment', sql.NVarChar, Data.Ailment)
         .query(`
             UPDATE Clinic
             SET Capacity = @Capacity, Beds = @Beds, EmergencyRooms = @EmergencyRooms, Ailment = @Ailment
-            WHERE clinicId = @clinicId
+            WHERE id = @clinicId
         `);
     context.res = {
         body: "Clinic updated successfully"
