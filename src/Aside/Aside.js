@@ -3,17 +3,22 @@ import "./Aside.css";
 
 import { clinics } from "../MockData/Arrays";
 
-const Aside = () => {
+
+const Aside = ({routes,calculate}) => {
   console.log(<MapPinIcon />);
   return (
-    <aside>
+    <aside className="hello">
+      
       <h1>Clinics near me</h1>
-      {clinics.map((clinic, index) => (
+      {routes.map((clinic, index) => (
         <div
           key={index}
           className="clinicCard"
           // Onclick go to profile page with input parameter clinic
-          onClick={() => console.log(clinic)}
+          // onClick={() => console.log(clinic)}
+          onClick={() => calculate(clinic.address)}
+
+     
         >
           <svg
             fill="#808080"
@@ -27,12 +32,13 @@ const Aside = () => {
           <section className="infoSection">
             <section className="textSection">
               <h4>{clinic.name}</h4>
-              {clinic.public ? <p>Public</p> : <p>Private</p>}
+              {console.log(clinic.Public)}
+              {clinic.Public ? <p>Public</p> : <p>Private</p>}
             </section>
 
             <div className="distanceContainer">
               <MapPinIcon width={24} className="mapPin" />
-              <p>2.4km away</p>
+              <p>{clinic.Distance}</p>
             </div>
           </section>
         </div>

@@ -1,6 +1,6 @@
 import "./Header.styles.js";
 import logo from "../Header/logo.svg";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import { Wrapper, Section } from "./Header.styles.js";
 
 const Header = ({ className = "" }) => {

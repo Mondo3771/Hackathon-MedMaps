@@ -7,11 +7,12 @@ export const Wrapper = styled.header`
   flex-direction: row;
   height: auto;
   background-color: #f4f4f4;
+  /* margin: 100px; */
 `;
 
 export const Section = styled.div`
-  position: fixed;
-  z-index: 9999;
+  /* position: fixed;
+  z-index: 9999; */
   width: 100vw;
   background-color: #f4f4f4;
   display: flex;

@@ -1,26 +1,27 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { GoogleMap, useJsApiLoader, DirectionsRenderer, Autocomplete,Marker } from '@react-google-maps/api';
-import { Wrapper } from './Maps.styles';
+import { Wrapper,Bottom,Check } from './Maps.styles';
+
+import { clinics,hospitals } from '../../MockData/Arrays';
+import Aside from '../../Aside/Aside';
+import News from '../News/News';
 
 const containerStyle = {
-    width: '700px',
-    height: '700px',
+    width: 'max-width',
+    height: '600px',
 };
 
-const mock = [
-    'Netcare Milpark Hospital, Guild Road, Parktown, Johannesburg, South Africa',
-    'Jhb Gen Hospital, Jubilee Road, Parktown, Johannesburg, South Africa',
-    'Netcare Park Lane Hospital, Park Lane, Parktown, Johannesburg, South Africa',
-    'Cj Cronje Building, Loveday Street, Johannesburg, South Africa',
-    '35 Bartlett Rd, Mayfair West, Johannesburg, 2092, South Africa'
-];
+
 
 function Maps() {
     const [center, setCenter] = useState(null);
     const [directionsResponse, setDirectionsResponse] = useState(null);
     const [selectedRouteIndex, setSelectedRouteIndex] = useState(null);
     const[routeData,setRouteData]=useState([])
+    const[clicked,setClicked]=useState(false)
     const inputRef = useRef();
+    const [isChecked, setIsChecked] = useState(false);
+
 
 
 const [origin, setOrigin]=useState(null);
@@ -56,6 +57,7 @@ const [origin, setOrigin]=useState(null);
     const onLoad = React.useCallback(function callback(map) {
         const bounds = new window.google.maps.LatLngBounds(center);
         map.fitBounds(bounds);
+        
 
         setMap(map);
     }, [center]);
@@ -70,6 +72,7 @@ const [origin, setOrigin]=useState(null);
     };
 
     const geocodeAddress = async (address) => {
+        
         const geocoder = new window.google.maps.Geocoder();
         return new Promise((resolve, reject) => {
             geocoder.geocode({ address: address }, (results, status) => {
@@ -107,9 +110,9 @@ const [origin, setOrigin]=useState(null);
         const directionsService = new window.google.maps.DirectionsService();
         const routes=[]
 
-        for (let i = 0; i < mock.length; i++) {
+        for (let i = 0; i < clinics.length; i++) {
             try {
-                const destinationLocation = await geocodeAddress(mock[i]);
+                const destinationLocation = await geocodeAddress(clinics[i].address);
 
                 const results = await directionsService.route({
                     // origin: await geocodeAddress(originAddress),
@@ -117,20 +120,22 @@ const [origin, setOrigin]=useState(null);
                     destination: destinationLocation,
                     travelMode: window.google.maps.TravelMode.DRIVING,
                 });
+                
                 routes.push({
-                    Place:mock[i],
+                    name:clinics[i].name,
                     Distance:results.routes[0].legs[0].distance.text,
-                    Duration:results.routes[0].legs[0].duration.text
+                    Duration:results.routes[0].legs[0].duration.text,
+                    Public:clinics[i].public,
+                    address:clinics[i].address
                 })
 
             } catch (error) {
-                console.error(error);
+                // console.error(error);
             }
         }
     
 
-      
-        setRouteData(routes.sort((a, b) => parseFloat(a.Duration) -parseFloat(b.Duration)));
+        setRouteData(routes.sort((a, b) => parseFloat(a.Distance) -parseFloat(b.Distance)));
     };
 
     useEffect(() => {
@@ -146,7 +151,7 @@ const [origin, setOrigin]=useState(null);
             console.error('Error fetching data:', error);
         });;
 
-    }, [ center]);
+    }, [center,isLoaded]);
 
 
 
@@ -154,7 +159,7 @@ const [origin, setOrigin]=useState(null);
         try {
             // const originLocation = await geocodeAddress(originAddress);
             const originLocation=center;
-            const destinationLocation = await geocodeAddress(routeData[index].Place);
+            const destinationLocation = await geocodeAddress(index);
 
             const directionsService = new window.google.maps.DirectionsService();
 
@@ -175,32 +180,41 @@ const [origin, setOrigin]=useState(null);
         return <p>Loading...</p>;
     }
     const changeCenter=async ()=>{
-        console.log(inputRef.current.value);
-        const destinationLocation = await geocodeAddress(inputRef.current.value);
-        setCenter({lat:destinationLocation.lat(),
-           lng: destinationLocation.lng()})
+    //    inputRef.current.value
+        setClicked(true)
+        if(inputRef.current.value){
+            const destinationLocation = await geocodeAddress(inputRef.current.value);
+            setCenter({lat:destinationLocation.lat(),
+               lng: destinationLocation.lng()})
+
+        }
+       
         
 
     }
     
 
 
+    const handleCheckboxChange = (event) => {
+      setIsChecked(event.target.checked);
+    };
 
     return (
         <>
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
-                zoom={10}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
+                zoom={10}
+                // mapTypeId="satellite"
+                
             >
 
                 {directionsResponse && selectedRouteIndex !== null && (
                     <DirectionsRenderer directions={directionsResponse} />
                     
                 )}
-                <Marker position={center} icon="http://maps.google.com/mapfiles/ms/icons/red-dot.png" />
 
             </GoogleMap>
                 <button onClick={recenterMap}>
@@ -215,7 +229,7 @@ const [origin, setOrigin]=useState(null);
                 <input placeholder="Enter a location " ref={inputRef} />
             </Autocomplete>
             <button onClick={changeCenter}>Confirm your location</button>
-            {
+            {/* {
             routeData.map((item, index) => (
                 <Wrapper key={index}>
                     <button onClick={() => calcRoute(index)}>Calculate Route</button>
@@ -223,7 +237,24 @@ const [origin, setOrigin]=useState(null);
                     <p>Distance: {item.Distance}</p>
                     <p>Duration: {item.Duration}</p>
                 </Wrapper>
-            ))}
+            ))} */}
+           
+            {/* <Aside routes={routeData}/> */}
+            <Check>
+            <input type='checkbox' checked={isChecked} 
+        onChange={handleCheckboxChange}  ></input>
+
+
+            </Check>
+            <Bottom>
+
+                {clicked && routeData? <Aside routes={routeData} calculate={calcRoute}/>:null}
+                {/* <News></News> */}
+
+                
+                </Bottom>
+            
+           
         </>
     );
 }

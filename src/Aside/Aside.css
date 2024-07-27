@@ -1,11 +1,18 @@
 aside {
     /* border: 1px solid black; */
     width :35vw;
-    height: fit-content;
+    /* height: fit-content; */
     display: flex;
     flex-direction: column;
     margin: 10px auto;
     overflow-y: auto; 
+    max-height: 50 vh;
+
+}
+.hello{
+    overflow-y: auto;
+    height: 50vh;
+    display: grid;
 }
 
 ::-webkit-scrollbar {
