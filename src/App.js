@@ -51,13 +51,13 @@ function App() {
     return hours + ':' + minutes + ':' + seconds;
 };
 
-const open = new Date();
-open.setHours(8,0,0,0);
-const openingTime = formatTime(open);
+// const open = new Date();
+// open.setHours(8,0,0,0);
+// const openingTime = formatTime(open);
 
-const close = new Date();
-close.setHours(14,0,0,0);
-const closingTime = formatTime(close);
+// const close = new Date();
+// close.setHours(14,0,0,0);
+// const closingTime = formatTime(close);
 // const data = {
 //   name :"Example Hospital" ,
 //   address:"123 Street Ave",
