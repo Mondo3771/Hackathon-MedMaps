@@ -71,7 +71,7 @@ module.exports = async function (context, req) {
                 );
                 SELECT SCOPE_IDENTITY() AS id;
             `);
-    console.log(result);
+    // console.log(result);
     const clinicId = 7;
     // console.log(clinicId);
     const specialties = clinicData.Specialties.split(",");
