@@ -4,6 +4,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import Maps from './Components/Maps/Maps';
+import HomePage from "./Pages/HomePage";
 
 
 import Aside from "./Aside/Aside";
@@ -144,7 +145,7 @@ function App() {
   //       </header>
   //     </div>
   // );
-  return <Maps />;
+  return <HomePage />;
 }
 
 export default App;

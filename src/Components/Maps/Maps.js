@@ -108,7 +108,6 @@ const [origin, setOrigin]=useState(null);
         const routes=[]
 
         for (let i = 0; i < mock.length; i++) {
-            
             try {
                 const destinationLocation = await geocodeAddress(mock[i]);
 
