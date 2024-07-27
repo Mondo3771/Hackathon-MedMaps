@@ -66,6 +66,16 @@ const AddAHospital = ()=>{
 .catch((error) => console.error('Error:', error));
 }
 
+const id=4; // this is the clinic ID that we get from local storage
+const GetNotification = () => {
+  fetch(`/api/Notifications?id=${id}`)
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch((error)=> {
+    console.error("Error:",error);
+  })
+}
+
 
 
 data = {
@@ -94,4 +104,25 @@ const UpdateAHospital = () => {
   .then(res => res.json())
   .then(data => console.log(data))
   .catch((error)=> console.error('Error:',error));
+}
+
+// data = {
+//   title:"Tuesday Notification",
+//   details:"We have the pills",
+//   time : '2022-04-01 08:00:12',
+//   clinicId:4
+// };
+const PostNotification = () => {
+  fetch(`/api/Notifications`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data), 
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch((error)=> {
+    console.error("Error:",error);
+  })
 }

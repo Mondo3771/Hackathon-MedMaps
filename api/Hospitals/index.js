@@ -30,8 +30,8 @@ module.exports = async function (context, req) {
         .input('name', sql.VarChar(255), clinicData.name)
         .input('address', sql.VarChar(255), clinicData.address)
         .input('tel', sql.VarChar(50), clinicData.tel)
- .input('openingTime', sql.Time, new Date(`1970-01-01T${clinicData.openingTime}Z`))
- .input('closingTime', sql.Time, new Date(`1970-01-01T${clinicData.closingTime}Z`))
+        .input('openingTime', sql.Time, new Date(`1970-01-01T${clinicData.openingTime}Z`))
+        .input('closingTime', sql.Time, new Date(`1970-01-01T${clinicData.closingTime}Z`))
         .input('isClinic', sql.Bit, clinicData.isClinic)
         .input('public', sql.Bit, clinicData.public)
         .input('open24Hours', sql.Bit, clinicData.open24Hours)
@@ -141,6 +141,9 @@ let selectResult = await pool.request()
     `);
 
 console.log(selectResult.recordset); // This will log all specialties for the clinic with id 1
+context.res={
+    body : "Clinic Updated successfully"
+}
           break;
     
         default:
