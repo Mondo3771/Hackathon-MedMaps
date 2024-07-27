@@ -34,7 +34,7 @@ const formatDateTime = (input) => {
   const newDate = new Date(input);
   const timeHourMin = newDate.toLocaleTimeString().split(" ")[0].split(":").slice(0,2)
   if (timeHourMin[0] < 10) timeHourMin[0] = "0"+ timeHourMin[0]
-  // if (timeHourMin[1] < 10) timeHourMin[1] = "0"+ timeHourMin[1]
+ 
   return timeHourMin[0] + ":" + timeHourMin[1]
 
 }
