@@ -4,6 +4,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import Maps from './Components/Maps/Maps';
+import HomePage from "./Pages/HomePage";
 
 
 
@@ -147,6 +148,41 @@ function App() {
 // );
 
 return <Maps/>
+  // const AddAHospital = ()=>{
+  //  fetch("/api/Hospitals", {
+  //     method: 'POST',
+  //     headers: {
+  //         'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(data), // replace 'data' with the actual data you want to send
+  // })
+  // .then(response => response.json())
+  // .then(data => console.log(data))
+  // .catch((error) => console.error('Error:', error));
+  // }
+  //   return (
+  //     <div className="App">
+  //       <header className="App-header">
+  //         <img src={logo} className="App-logo" alt="logo" />
+  //         <p>
+  //           Edit <code>src/App.js</code> and save to relo d.
+  //         </p>
+  //         <button onClick={AddAHospital}>Call API</button>
+  //         <a
+  //           className="App-link"
+  //           href="https://reactjs.org"
+  //           target="_blank"
+  //           rel="noopener noreferrer"
+  //         >
+  //           Learn React
+  //         </a>
+  //         <LoginButton />
+  //         <LogoutButton />
+  //         <Profile />
+  //       </header>
+  //     </div>
+  // );
+  return <HomePage />;
 }
 
 export default App;

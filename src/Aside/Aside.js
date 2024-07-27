@@ -27,7 +27,7 @@ const Aside = () => {
           <section className="infoSection">
             <section className="textSection">
               <h4>{clinic.name}</h4>
-              {clinic.public ? <p>General</p> : <p>Private</p>}
+              {clinic.public ? <p>Public</p> : <p>Private</p>}
             </section>
 
             <div className="distanceContainer">
