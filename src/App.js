@@ -37,19 +37,19 @@ function App() {
       )
     );
   };
-  const formatTime = (date) => {
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
+//   const formatTime = (date) => {
+//     let hours = date.getHours();
+//     let minutes = date.getMinutes();
+//     let seconds = date.getSeconds();
 
-    // Pad the hours, minutes, and seconds with leading zeros, if necessary
-    hours = hours < 10 ? '0' + hours : hours;
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
+//     // Pad the hours, minutes, and seconds with leading zeros, if necessary
+//     hours = hours < 10 ? '0' + hours : hours;
+//     minutes = minutes < 10 ? '0' + minutes : minutes;
+//     seconds = seconds < 10 ? '0' + seconds : seconds;
 
-    // Format the time in the 'HH:mm:ss' format
-    return hours + ':' + minutes + ':' + seconds;
-};
+//     // Format the time in the 'HH:mm:ss' format
+//     return hours + ':' + minutes + ':' + seconds;
+// };
 
 // const open = new Date();
 // open.setHours(8,0,0,0);
