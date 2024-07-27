@@ -5,7 +5,7 @@ const clinics = [
       tel: ["011 376 8525", "011 376 8554"],
       openingTime: "8:00 AM",
       closingTime: "4:30 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: true, // Not provided
       open24Hours: false,
@@ -18,7 +18,7 @@ const clinics = [
       tel: ["011 336 5241", "011 336 5243"],
       openingTime: "8:00 AM",
       closingTime: "4:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -31,7 +31,7 @@ const clinics = [
       tel: "011 837 6206",
       openingTime: "8:00 AM",
       closingTime: "4:00 PM",
-      specialties: [
+      Specialties: [
         "Diabetes",
         "Dialysis",
         "HIV",
@@ -52,7 +52,7 @@ const clinics = [
       tel: "011 725 4728",
       openingTime: "8:00 AM",
       closingTime: "4:00 PM",
-      specialties: [],
+      Specialties: [],
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -65,7 +65,7 @@ const clinics = [
       tel: ["011 614 1474", "011 614 1475", "011 614 1476"],
       openingTime: "8:00 AM",
       closingTime: "4:00 PM",
-      specialties: ["TB", "Psychiatry"],
+      Specialties: ["TB", "Psychiatry"],
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -78,7 +78,7 @@ const clinics = [
       tel: ["011 725 6711", "011 725 6721"],
       openingTime: "8:00 AM",
       closingTime: "4:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -91,7 +91,7 @@ const clinics = [
       tel: "011 648 7979",
       openingTime: "8:00 AM",
       closingTime: "4:00 PM",
-      specialties: ["TB"],
+      Specialties: ["TB"],
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -104,7 +104,7 @@ const clinics = [
       tel: ["011 717 3376", "011 717 3377"],
       openingTime: "7:00 AM",
       closingTime: "7:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -117,7 +117,7 @@ const clinics = [
       tel: ["011 435 1045", "011 435 1046", "011 435 1047"],
       openingTime: "7:30 AM",
       closingTime: "4:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -130,7 +130,7 @@ const clinics = [
       tel: "011 432 3546",
       openingTime: "7:30 AM",
       closingTime: "3:30 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -143,7 +143,7 @@ const clinics = [
       tel: "011 623 1297",
       openingTime: "7:30 AM",
       closingTime: "4:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -156,7 +156,7 @@ const clinics = [
       tel: "011 433 2351",
       openingTime: "8:00 AM",
       closingTime: "4:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -169,7 +169,7 @@ const clinics = [
       tel: "011 433 1593",
       openingTime: "7:30 AM",
       closingTime: "2:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -182,7 +182,7 @@ const clinics = [
       tel: "011 622 1245",
       openingTime: "7:30 AM",
       closingTime: "4:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -195,7 +195,7 @@ const clinics = [
       tel: "011 943 2002",
       openingTime: "7:30 AM",
       closingTime: "4:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -208,7 +208,7 @@ const clinics = [
       tel: ["011 837 9118", "011 837 9119"],
       openingTime: "7:30 AM",
       closingTime: "4:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -221,7 +221,7 @@ const clinics = [
       tel: "011 336 0517",
       openingTime: "7:00 AM",
       closingTime: "4:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -234,7 +234,7 @@ const clinics = [
       tel: "011 648 0617",
       openingTime: "7:30 AM",
       closingTime: "4:00 PM",
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: true,
       public: false,
       open24Hours: false,
@@ -250,7 +250,7 @@ const clinics = [
       tel: "011 677 8500",
       openingTime: null, // Not provided
       closingTime: null, // Not provided
-      specialties: [], // Not provided
+      Specialties: [], // Not provided
       isClinic: false,
       public: true,
       open24Hours: false, // Not provided
@@ -263,7 +263,7 @@ const clinics = [
       tel: "010 009 6200",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: true,
       open24Hours: false,
@@ -279,7 +279,7 @@ const clinics = [
       tel: "011 647 9000",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: true,
       open24Hours: false,
@@ -292,7 +292,7 @@ const clinics = [
       tel: "011 933 8000",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: true,
       open24Hours: false,
@@ -305,7 +305,7 @@ const clinics = [
       tel: "011 489 1011",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: true,
       open24Hours: true,
@@ -318,7 +318,7 @@ const clinics = [
       tel: "011 488 4911",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: true,
       open24Hours: true,
@@ -331,7 +331,7 @@ const clinics = [
       tel: "011 470 9000",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: true,
       open24Hours: false,
@@ -344,7 +344,7 @@ const clinics = [
       tel: "011 321 6000",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: true,
       open24Hours: false,
@@ -357,7 +357,7 @@ const clinics = [
       tel: "011 898 8000",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: true,
       open24Hours: false,
@@ -370,7 +370,7 @@ const clinics = [
       tel: "011 213 2000",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: true,
       open24Hours: false,
@@ -383,7 +383,7 @@ const clinics = [
       tel: "011 435 0022",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: true,
       open24Hours: false,
@@ -396,7 +396,7 @@ const clinics = [
       tel: "011 923 2000",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: true,
       open24Hours: false,
@@ -409,7 +409,7 @@ const clinics = [
       tel: "011 812 8300",
       openingTime: null,
       closingTime: null,
-      specialties: [],
+      Specialties: [],
       isClinic: false,
       public: false,
       open24Hours: false,
@@ -418,4 +418,112 @@ const clinics = [
     },
   ];
   
-export {clinics,hospitals}   
+  const announcements = [
+    {
+      messageID: 1,
+      title: "Flu Vaccine Stock Update",
+      details: "We are pleased to inform you that our clinic has received a new stock of flu vaccines. You can book your appointment for the flu shot starting next Monday.",
+      time: "2024-07-25 10:30:00",
+      id: 101,
+    },
+    {
+      messageID: 2,
+      title: "Change in Operating Hours",
+      details: "Please note that our clinic will be operating from 9:00 AM to 5:00 PM on Friday, August 2nd, due to staff training.",
+      time: "2024-07-26 09:00:00",
+      id: 102,
+    },
+    {
+      messageID: 3,
+      title: "New Specialist Joining Our Team",
+      details: "We are excited to announce that Dr. Emily Chang, a renowned pediatrician, will be joining our clinic starting September 1st. Bookings for pediatric consultations are now open.",
+      time: "2024-07-27 14:00:00",
+      id: 103,
+    },
+    {
+      messageID: 4,
+      title: "COVID-19 Testing Availability",
+      details: "Our clinic continues to offer COVID-19 testing every Tuesday and Thursday. Please book an appointment online or call our reception for more details.",
+      time: "2024-07-28 08:45:00",
+      id: 104,
+    },
+    {
+      messageID: 5,
+      title: "Upcoming Health Workshop",
+      details: "Join us for a free health workshop on 'Managing Diabetes' on Saturday, August 5th, from 10:00 AM to 12:00 PM. Register at the front desk to secure your spot.",
+      time: "2024-07-29 11:15:00",
+      id: 105,
+    },
+    {
+      messageID: 6,
+      title: "New Appointment Booking System",
+      details: "We have launched a new online appointment booking system to improve your experience. Visit our website to book your appointments with ease.",
+      time: "2024-07-30 16:00:00",
+      id: 106,
+    },
+    {
+      messageID: 7,
+      title: "Temporary Closure for Renovation",
+      details: "Please be informed that our clinic will be closed for renovations from August 15th to August 20th. We apologize for any inconvenience caused.",
+      time: "2024-07-31 13:30:00",
+      id: 107,
+    },
+    {
+      messageID: 8,
+      title: "Blood Donation Camp",
+      details: "Join us for our annual blood donation camp on August 10th from 9:00 AM to 4:00 PM. Your participation can save lives!",
+      time: "2024-08-01 12:01:01",
+      id: 108,
+    },
+    {
+      messageID: 9,
+      title: "Special Discount on Health Check-ups",
+      details: "Throughout August, we are offering a 20% discount on all comprehensive health check-up packages. Book your appointment today.",
+      time: "2024-08-02 10:00:00",
+      id: 109,
+    },
+    {
+      messageID: 10,
+      title: "Free Nutrition Consultation",
+      details: "We are offering free nutrition consultations with our dietician every Wednesday in August. Call us to schedule your session.",
+      time: "2024-08-03 09:30:00",
+      id: 110,
+    },
+    {
+      messageID: 11,
+      title: "Health Insurance Partnership Announcement",
+      details: "We are pleased to announce our partnership with ABC Health Insurance, offering more coverage options for our patients.",
+      time: "2024-08-04 14:45:00",
+      id: 111,
+    },
+    {
+      messageID: 12,
+      title: "Update on Appointment Cancellations",
+      details: "Due to high demand, please cancel appointments at least 24 hours in advance to avoid any charges. Thank you for your cooperation.",
+      time: "2024-08-05 11:00:00",
+      id: 112,
+    },
+    {
+      messageID: 13,
+      title: "Mental Health Awareness Campaign",
+      details: "Join us for a series of talks and workshops on mental health from August 12th to August 14th. Open to all community members.",
+      time: "2024-08-06 15:20:00",
+      id: 113,
+    },
+    {
+      messageID: 14,
+      title: "Annual Staff Training Day",
+      details: "Our clinic will be closed on August 18th for our annual staff training day. We appreciate your understanding and support.",
+      time: "2024-08-07 13:00:00",
+      id: 114,
+    },
+    {
+      messageID: 15,
+      title: "Women's Health Screening Event",
+      details: "We are hosting a Women's Health Screening event on August 20th from 9:00 AM to 3:00 PM. Book your spot now for early detection screenings.",
+      time: "2024-08-08 12:30:00",
+      id: 115,
+    },
+  ];
+  
+export {clinics,hospitals,announcements}   
