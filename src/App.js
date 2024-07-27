@@ -48,7 +48,7 @@ function App() {
 };
 
 const UpdateClinic = () => {
-    fetch(`/api/Hospitals`, {
+    fetch(`/api/DailyUpdates`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
