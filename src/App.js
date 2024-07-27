@@ -73,13 +73,7 @@ const data = {
 }
 
 const AddAHospital = ()=>{
- fetch("/api/Hospitals", {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data), // replace 'data' with the actual data you want to send
-})
+ fetch("/api/Hospitals")
 .then(response => response.json())
 .then(data => console.log(data))
 .catch((error) => console.error('Error:', error));
