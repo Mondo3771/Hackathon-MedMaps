@@ -98,7 +98,7 @@ const AddAHospital = ()=>{
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn Reac
         </a>
         <LoginButton />
         <LogoutButton />
