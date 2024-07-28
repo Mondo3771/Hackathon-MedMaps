@@ -3,15 +3,19 @@ import "./App.css";
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import Maps from './Components/Maps/Maps';
+import Maps from "./Components/Maps/Maps";
 import HomePage from "./Pages/HomePage";
 import ClinicProfile from "./Pages/ClinicProfile/ClinicProfile";
-import { BrowserRouter as Router, Route, createBrowserRouter,  createRoutesFromChildren, RouterProvider } from 'react-router-dom';
-
-
+import Announcements from "./Components/Announcements/Announcements";
+import MakeAnnouncement from "./Components/MakeAnnouncement/MakeAnnouncement";
+import { fetchLocalStorage } from "./helpers/helpers";
+import {
+  createBrowserRouter,
+  createRoutesFromChildren,
+  Route,
+} from "react-router-dom";
 
 // import { fetchLocalStorage, setLocalStorage } from './helpers/helpers';
-
 
 import ProfileComp from "./Components/ProfileComp/ProfileComp";
 import Header from "./Components/Header/Header";
