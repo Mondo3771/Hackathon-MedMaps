@@ -184,7 +184,7 @@ function App() {
   //       </header>
   //     </div>
   // );
-  return <HomePage/>
+  return <ClinicProfile/>
 
 }
 
