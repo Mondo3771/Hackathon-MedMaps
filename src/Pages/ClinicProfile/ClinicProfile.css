@@ -1,0 +1,115 @@
+button {
+    cursor: pointer;
+}
+.clinicProfilePage {
+  display: flex;
+  overflow-x: hidden;
+  margin: 1rem 5px;
+
+  flex-direction: column;
+}
+.titleSection {
+    display: flex;
+    align-items: center;
+}
+
+.padder {
+    margin: 0 20px;
+}
+.clinicName {
+    font-size: 4rem;
+}
+.clinicIcon {
+    width: 200px;
+}
+.typeInfo {
+    font-weight: bold;
+    color: gray;
+}
+
+.specialtiesContainer {
+ border: 1px solid gray;
+ display: flex;
+ flex-direction: column;
+ padding: 5px 0;
+}
+
+.list {
+    list-style: circle;
+    margin: 0 50px;
+}
+.editSpecialties {
+    display: flex;
+    align-items: flex-end;
+}
+.doneButton {
+    height: 30px;
+}
+.specialtiesTextarea {
+    resize: none;
+    font-family: inherit;
+    font-size: .9rem;
+    padding: 5px;
+    text-wrap: balance;
+    width: 300px;
+    height: 100px;
+}
+.telTextarea {
+    resize: none;
+    font-family: inherit;
+    font-size: .9rem;
+    padding: 5px;
+    text-wrap: balance;
+    width: 300px;
+    height: 15px;
+}
+
+.notifications {
+    border: 1px solid black;
+}
+
+.emergencyBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: rgb(20, 170, 20);
+}
+
+.down {
+    background-color: rgb(0, 100, 0);
+}
+
+.capacitiesInput {
+    width: 300px;
+    font-family: inherit;
+
+}
+
+.contactContainer {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+.btnContact {
+    width : 40px;
+}
+
+.tels {
+    margin: 0 50px;
+}
+
+.saveButton {
+    width: 100px;
+    margin: 0 20px;
+}
+.input {
+    width: 350px;
+}
+.inputInEdit {
+    border: none;
+}
+

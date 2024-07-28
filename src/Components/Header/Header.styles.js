@@ -11,7 +11,7 @@ export const Wrapper = styled.header`
 `;
 
 export const Section = styled.div`
-  /* position: fixed;
+  /* /* position: fixed; */
   z-index: 9999; */
   width: 100vw;
   background-color: #f4f4f4;

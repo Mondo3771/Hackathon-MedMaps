@@ -1,0 +1,19 @@
+.announcements {
+    display: flex;
+    flex-direction: column;
+    width: 750px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: auto;
+
+}
+
+.announcementCard {
+    display: flex;
+    height: 90px;
+}
+
+.announcementInfo {
+    width: 80%;
+    padding-left: 1rem;
+}
