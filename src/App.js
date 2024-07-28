@@ -8,6 +8,7 @@ import HomePage from "./Pages/HomePage";
 import ClinicProfile from "./Pages/ClinicProfile/ClinicProfile";
 
 
+// import { fetchLocalStorage, setLocalStorage } from './helpers/helpers';
 
 
 
