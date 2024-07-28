@@ -25,7 +25,7 @@ import Maps from "../Components/Maps/Maps";
 
 import Header from "../Components/Header/Header";
 import { CheckIcon } from "@heroicons/react/24/solid";
-import { fetchLocalStorage } from "../../Helpers/helpers";
+import { fetchLocalStorage } from "../../helpers/helpers";
 
 const HomePage = () => {
   const clinicInfo = fetchLocalStorage({ key: "User" }) ?? [];

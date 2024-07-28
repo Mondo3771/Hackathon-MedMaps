@@ -1,7 +1,7 @@
 import "./Announcements.css";
 // import { clinics, announcements } from "../../MockData/Arrays";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
-import { formatDateTimeDatabase } from "../../Helpers/helpers";
+import { formatDateTimeDatabase } from "../../helpers/helpers";
 import { useEffect, useState } from "react";
 
 const Announcements = ({ id }) => {
