@@ -5,8 +5,8 @@ import Maps from "../Components/Maps/Maps";
 import Header from "../Components/Header/Header";
 import { CheckIcon } from "@heroicons/react/24/solid";
 // import { fetchLocalStorage } from "../helpers/helpers.js";
-import { fetchLocalStorage } from "../Helpers/helpers";
-import ProfileComp from "../Components/ProfileComp/ProfileComp";
+import { fetchLocalStorage } from "../Helpers/helpers.js";
+// import ProfileComp from "../Components/ProfileComp/ProfileComp";
 
 const HomePage = () => {
   const clinicInfo = fetchLocalStorage({ key: "User" }) ?? [];
