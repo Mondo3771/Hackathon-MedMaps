@@ -1,28 +1,52 @@
-import "./Announcements.css"
-import { clinics,announcements } from "../../MockData/Arrays"
+import "./Announcements.css";
+import { clinics, announcements } from "../../MockData/Arrays";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
-import { formatDateTime } from "../../Helpers/helpers";
+import { formatDateTimeDatabase } from "../../helpers/helpers";
+import { useEffect, useState } from "react";
 
-const Announcements = ({id}) => {
-    const ID = 101;
-    const filteredArray = announcements.filter(a => a.id === ID);
+const Announcements = ({ id }) => {
+  const [announcementsDB, setAnnouncemntsDB] = useState(null);
 
-  return (
-    <section className="announcements">
-        {filteredArray.map((announcement,index) => 
-        (
-        <div className="announcementCard" key={index}>
-            <UserCircleIcon width={75}/>
+  useEffect(() => {
+    const GetNotification = (id) => {
+      fetch(`/api/Notifications?id=${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          let temp = data;
+          temp.sort((a, b) => {
+            let time1 = new Date(a.time);
+            let time2 = new Date(b.time);
+            return time1 - time2
+          });
+          setAnnouncemntsDB(temp);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    };
+    GetNotification(id);
+  }, []);
+
+  if (announcementsDB) {
+    return (
+      <section className="announcements">
+        {announcementsDB.map((announcement, index) => (
+          <div className="announcementCard" key={index}>
+            <UserCircleIcon width={75} />
             <div className="announcementInfo">
-                <h3>{announcement.title}</h3>
-                <p>{announcement.details}</p>
+              <h3>{announcement.title}</h3>
+              <p>{announcement.details}</p>
             </div>
-            <p className="announcementTime">{formatDateTime(announcement.time)}</p>
-        </div>
-        ))
-    }
-    </section>
-  )
-}
+            <p className="announcementTime">
+              {formatDateTimeDatabase(announcement.time)}
+            </p>
+          </div>
+        ))}
+      </section>
+    );
+  } else {
+    <div></div>;
+  }
+};
 
-export default Announcements
+export default Announcements;

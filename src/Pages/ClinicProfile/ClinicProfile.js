@@ -4,8 +4,6 @@ import Header from "../../Components/Header/Header";
 import "./ClinicProfile.css";
 import { fetchLocalStorage } from "../../helpers/helpers";
 
-
-
 import { useState } from "react";
 import { clinics } from "../../MockData/Arrays";
 

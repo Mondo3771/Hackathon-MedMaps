@@ -6,6 +6,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Maps from './Components/Maps/Maps';
 import HomePage from "./Pages/HomePage";
 import ClinicProfile from "./Pages/ClinicProfile/ClinicProfile";
+import Announcements from "./Components/Announcements/Announcements";
+import MakeAnnouncement from "./Components/MakeAnnouncement/MakeAnnouncement";
+import { fetchLocalStorage } from "./helpers/helpers";
+import { createBrowserRouter, createRoutesFromChildren, Route } from "react-router-dom";
 
 
 // import { fetchLocalStorage, setLocalStorage } from './helpers/helpers';
@@ -184,7 +188,12 @@ function App() {
   //       </header>
   //     </div>
   // );
-  return <ClinicProfile/>
+  const clinic = fetchLocalStorage({key:"Clinic"})
+  console.log(clinic)
+ 
+  return <><Announcements id={4}/>
+  <MakeAnnouncement clinic={clinic} ID={clinic.id}/>
+  </>
 
 }
 

@@ -38,6 +38,15 @@ const formatDateTime = (input) => {
   return timeHourMin[0] + ":" + timeHourMin[1]
 
 }
+const formatDateTimeDatabase = (input) => {
+  const newDate = new Date(input)
+  // console.log(newDates.toLocaleTimeString)
+  const timeHourMin = newDate.toLocaleTimeString().split(" ")[0].split(":").slice(0,2)
+  if (timeHourMin[0] < 10) timeHourMin[0] = "0"+ timeHourMin[0]
+ 
+  return timeHourMin[0] + ":" + timeHourMin[1]
+
+}
 
 const setLocalStorage = ({key,value}) => {
   return localStorage.setItem(key, JSON.stringify(value));
@@ -46,4 +55,4 @@ const setLocalStorage = ({key,value}) => {
 const fetchLocalStorage = ({key}) => {
   return JSON.parse(localStorage.getItem(key));
 }
-export {searchFunction,formatDateTime, setLocalStorage,fetchLocalStorage}
+export {searchFunction,formatDateTime, setLocalStorage,fetchLocalStorage,formatDateTimeDatabase}
