@@ -1,7 +1,7 @@
 import { MapPinIcon } from "@heroicons/react/24/solid";
 import "./Aside.css";
 
-import { clinics } from "../MockData/Arrays";
+// import { clinics } from "../MockData/Arrays";
 import ProfileComp from "../Components/ProfileComp/ProfileComp";
 import { useState } from "react";
 

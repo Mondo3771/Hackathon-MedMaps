@@ -8,7 +8,7 @@ import HomePage from "./Pages/HomePage";
 import ClinicProfile from "./Pages/ClinicProfile/ClinicProfile";
 // import Announcements from "./Components/Announcements/Announcements";
 // import MakeAnnouncement from "./Components/MakeAnnouncement/MakeAnnouncement";
-import { fetchLocalStorage } from "./Helpers/helpers";
+// import { fetchLocalStorage } from "./Helpers/helpers";
 import {
   createBrowserRouter,
   createRoutesFromChildren,
