@@ -74,3 +74,4 @@ npm install dotenv
 npm install mssql
 npm install @auth0/auth0-react
 npm install path-browserify
+npm install react-router-dom

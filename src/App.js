@@ -2,6 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
+
+// in your render method:
+
 // import { fetchLocalStorage, setLocalStorage } from './helpers/helpers';
 
 
@@ -24,7 +27,11 @@ function App() {
   };
   const Profile = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
-  
+    console.log(user);
+    if (isAuthenticated && user.sub === process.env.REACT_APP_ADMIN_SUB){
+      // SHOULD REDIRECT ME TO THE ADMIN PAGE
+      console.log("Take me to Admin Page");
+    }
     if (isLoading) {
       return <div>Loading ...</div>;
     }
@@ -39,29 +46,7 @@ function App() {
       )
     );
   };
-  const data = {
-    clinicId: 4,
-    Capacity: '100',
-    Beds: 50,
-    EmergencyRooms: true,
-    Ailment: "Common Cold"
-};
-
-const UpdateClinic = () => {
-    fetch(`/api/DailyUpdates`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data), 
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch((error)=> {
-        console.error("Error:",error);
-    })
-}
-
+ 
   return (
     <div className="App">
       <header className="App-header">
@@ -69,7 +54,7 @@ const UpdateClinic = () => {
         <p>
           Edit <code>src/App.js</code> and save to relo d.
         </p>
-        <button onClick={UpdateClinic}>Call API</button>
+        {/* <button onClick={UpdateClinic}>Call API</button> */}
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -81,9 +66,13 @@ const UpdateClinic = () => {
         <LoginButton />
         <LogoutButton />
         <Profile />
+        
       </header>
     </div>
   );
 }
 
 export default App;
+// Admin
+// Admin@gmail.com
+// 123456789Ad.
