@@ -16,8 +16,10 @@ body {
 
 .form-field {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     margin-bottom: 20px;
+    align-items: center;
+    justify-content: left;
 }
 
 .input {
