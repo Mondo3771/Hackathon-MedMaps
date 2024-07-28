@@ -183,7 +183,8 @@ context.res={
         console.log(err);
         context.res = {
             status: 500,
-            body: "Error connecting to the database",err
+            body: {error: err,
+            message: "Error while processing your request"}
         };
     } finally {
         sql.close();
