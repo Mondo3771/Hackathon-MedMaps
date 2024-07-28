@@ -2,9 +2,9 @@
 import Header from "../../Components/Header/Header";
 //styled components
 import "./ClinicProfile.css";
-import { fetchLocalStorage, setLocalStorage } from "../../Helpers/helpers";
-import { TrashIcon } from "@heroicons/react/24/outline";
-import { useState, useEffect } from "react";
+import { fetchLocalStorage } from "../../Helpers/helpers";
+
+import { useState } from "react";
 import { clinics } from "../../MockData/Arrays";
 
 const ClinicProfile = () => {
