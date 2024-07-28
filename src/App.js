@@ -3,12 +3,12 @@ import "./App.css";
 import React from "react";
 // import { useAuth0 } from "@auth0/auth0-react";
 
-import Maps from "./Components/Maps/Maps";
+// import Maps from "./Components/Maps/Maps";
 import HomePage from "./Pages/HomePage";
 import ClinicProfile from "./Pages/ClinicProfile/ClinicProfile";
 // import Announcements from "./Components/Announcements/Announcements";
 // import MakeAnnouncement from "./Components/MakeAnnouncement/MakeAnnouncement";
-// import { fetchLocalStorage } from "./helpers/helpers";
+import { fetchLocalStorage } from "./Helpers/helpers";
 import {
   createBrowserRouter,
   createRoutesFromChildren,
