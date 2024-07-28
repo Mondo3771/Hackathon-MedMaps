@@ -2,7 +2,7 @@
 import Header from "../../Components/Header/Header";
 //styled components
 import "./ClinicProfile.css";
-import { fetchLocalStorage } from "../../Helpers/helpers";
+import { fetchLocalStorage } from "../../helpers/helpers";
 
 import { useState } from "react";
 import { clinics } from "../../MockData/Arrays";

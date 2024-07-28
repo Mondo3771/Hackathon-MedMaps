@@ -4,7 +4,7 @@ import Maps from "../Components/Maps/Maps";
 
 import Header from "../Components/Header/Header";
 import { CheckIcon } from "@heroicons/react/24/solid";
-import { fetchLocalStorage } from "../Helpers/helpers";
+import { fetchLocalStorage } from "../helpers/helpers";
 
 const HomePage = () => {
   const clinicInfo = fetchLocalStorage({ key: "User" }) ?? [];
@@ -14,7 +14,6 @@ const HomePage = () => {
     details: "",
     id: clinicInfo.id ? clinicInfo.id : 108,
   });
-
 
   return (
     <main className="homepage">
@@ -58,7 +57,6 @@ const HomePage = () => {
                 details: newAnnouncement.details,
                 id: newAnnouncement.id,
               });
-       
             }}
           >
             <CheckIcon width={24} />

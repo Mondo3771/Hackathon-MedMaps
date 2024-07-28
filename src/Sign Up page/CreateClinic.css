@@ -30,7 +30,7 @@ body {
 }
 
 .input:required:invalid {
-    background-color: #D3D3D3; /* Dark gray */
+    background-color: #dcdcdc; /* Dark gray */
 }
 
 .label {
@@ -41,7 +41,7 @@ body {
 
 .submit-button {
     padding: 15px 25px;
-    background-color: #4CAF50;
+    background-color: #a3b899;
     color: white;
     border: none;
     border-radius: 8px;
@@ -50,5 +50,5 @@ body {
 }
 
 .submit-button:hover {
-    background-color: #45a049;
+    background-color: #555;
 }
