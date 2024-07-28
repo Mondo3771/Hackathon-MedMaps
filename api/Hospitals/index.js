@@ -24,64 +24,79 @@ module.exports = async function (context, req) {
     case 'POST':
     // Handle PUT request
     // console.log('Handling PUT request');
-    const clinicData = req.body;
-
+    const token = req.headers['Authorization'];
     result = await pool.request()
-        .input('name', sql.VarChar(255), clinicData.name)
-        .input('address', sql.VarChar(255), clinicData.address)
-        .input('tel', sql.VarChar(50), clinicData.tel)
-        .input('openingTime', sql.Time, new Date(`1970-01-01T${clinicData.openingTime}Z`))
-        .input('closingTime', sql.Time, new Date(`1970-01-01T${clinicData.closingTime}Z`))
-        .input('isClinic', sql.Bit, clinicData.isClinic)
-        .input('public', sql.Bit, clinicData.public)
-        .input('open24Hours', sql.Bit, clinicData.open24Hours)
-        .input('email', sql.VarChar(255), clinicData.email)
-        .input('website', sql.VarChar(255), clinicData.website)
-        .input('key',sql.NVarChar(255),clinicData.key)
-        .query(`
-                INSERT INTO Clinic (
-               
-                    name, 
-                    address, 
-                    tel, 
-                    openingTime,
-                    closingTime,
-                    isClinic, 
-                    [public], 
-                    open24Hours, 
-                    email, 
-                    website,
-                    [key]
-                ) VALUES (
-                   @name, 
-                    @address, 
-                    @tel, 
-                    @openingTime,
-                    @closingTime,
-                    @isClinic, 
-                    @public, 
-                    @open24Hours, 
-                    @email, 
-                    @website,
-                    @key
-                );
-                SELECT SCOPE_IDENTITY() AS id;
-            `);
-    console.log(result);
-    const clinicId =result.recordset[0].id;
-    console.log(clinicId);
-    const specialties = clinicData.Specialties.split(",");
-    for (let specialty of specialties) {
-        await pool.request()
-            .input('clinicId', sql.Int, clinicId)
-            .input('specialty', sql.VarChar(255), specialty.trim())
-            .query(`INSERT INTO Specialty (clinicId, specialty) 
-                    VALUES (@clinicId, @specialty);`);
+    .input('key', sql.VarChar(255),token)
+    .query(`
+    select * from Admin where [key] = @key
+    `)
+    if(result.recordset.len !=0){
+
+        const clinicData = req.body;
+
+        result = await pool.request()
+            .input('name', sql.VarChar(255), clinicData.name)
+            .input('address', sql.VarChar(255), clinicData.address)
+            .input('tel', sql.VarChar(50), clinicData.tel)
+            .input('openingTime', sql.Time, new Date(`1970-01-01T${clinicData.openingTime}Z`))
+            .input('closingTime', sql.Time, new Date(`1970-01-01T${clinicData.closingTime}Z`))
+            .input('isClinic', sql.Bit, clinicData.isClinic)
+            .input('public', sql.Bit, clinicData.public)
+            .input('open24Hours', sql.Bit, clinicData.open24Hours)
+            .input('email', sql.VarChar(255), clinicData.email)
+            .input('website', sql.VarChar(255), clinicData.website)
+            .input('key',sql.NVarChar(255),clinicData.key)
+            .query(`
+                    INSERT INTO Clinic (
+                   
+                        name, 
+                        address, 
+                        tel, 
+                        openingTime,
+                        closingTime,
+                        isClinic, 
+                        [public], 
+                        open24Hours, 
+                        email, 
+                        website,
+                        [key]
+                    ) VALUES (
+                       @name, 
+                        @address, 
+                        @tel, 
+                        @openingTime,
+                        @closingTime,
+                        @isClinic, 
+                        @public, 
+                        @open24Hours, 
+                        @email, 
+                        @website,
+                        @key
+                    );
+                    SELECT SCOPE_IDENTITY() AS id;
+                `);
+        console.log(result);
+        const clinicId =result.recordset[0].id;
+        console.log(clinicId);
+        const specialties = clinicData.Specialties.split(",");
+        for (let specialty of specialties) {
+            await pool.request()
+                .input('clinicId', sql.Int, clinicId)
+                .input('specialty', sql.VarChar(255), specialty.trim())
+                .query(`INSERT INTO Specialty (clinicId, specialty) 
+                        VALUES (@clinicId, @specialty);`);
+        }
+        context.res = {
+            status: 200,
+            body: "Clinic and specialties added successfully"
+        };
     }
-    context.res = {
-        status: 200,
-        body: "Clinic and specialties added successfully"
-    };
+    else{
+        context.res ={
+            status :200,
+            body:"Incorrect Sub"
+        }
+    }
     break;
         case 'PUT':
             const Data = req.body;

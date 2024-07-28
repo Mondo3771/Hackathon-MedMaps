@@ -53,11 +53,12 @@ let data = {
   Specialties:"Orthopedics,Dermatology,Neurology"
 }
 
-const AddAHospital = ()=>{
+const AddAHospital = (token)=>{
  fetch("/api/Hospitals", {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
+        'Authorizatoin': token
     },
     body: JSON.stringify(data), // replace 'data' with the actual data you want to send
 })
