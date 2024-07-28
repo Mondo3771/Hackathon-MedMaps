@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { GoogleMap, useJsApiLoader, DirectionsRenderer, Autocomplete,Marker } from '@react-google-maps/api';
-import { Wrapper,Bottom,Check } from './Maps.styles';
+import { GoogleMap, useJsApiLoader, DirectionsRenderer, Autocomplete } from '@react-google-maps/api';
+import { Bottom,Check } from './Maps.styles';
 
 import { clinics,hospitals } from '../../MockData/Arrays';
 import Aside from '../../Aside/Aside';
@@ -53,7 +53,7 @@ const [origin, setOrigin]=useState(null);
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: 'AIzaSyCgUoQ_heIIK0FOUyzNqz8j5fL0OfFijCQ',
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
         libraries:libraries,
     });
 
@@ -286,7 +286,7 @@ const [origin, setOrigin]=useState(null);
             </Check>
             <Bottom>
                 {clicked && routeData? <Aside routes={isChecked?routeHosData:routeData} calculate={calcRoute} checked={isChecked}/>:null}
-                {/* <News></News> */}
+                <News></News>
 
                 
                 </Bottom>
