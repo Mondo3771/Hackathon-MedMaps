@@ -5,6 +5,7 @@ import Maps from "../Components/Maps/Maps";
 import Header from "../Components/Header/Header";
 import { CheckIcon } from "@heroicons/react/24/solid";
 import { fetchLocalStorage } from "../Helpers/helpers";
+import ProfileComp from "../Components/ProfileComp/ProfileComp";
 
 const HomePage = () => {
   const clinicInfo = fetchLocalStorage({ key: "User" }) ?? [];
@@ -18,9 +19,9 @@ const HomePage = () => {
 
   return (
     <main className="homepage">
-      <Header />
       <Maps></Maps>
-      <section className="announcementSection">
+      {/*clinics only */}
+      {/* <section className="announcementSection">
         <h3>Announcements</h3>
         <textarea
           className="announcementInput"
@@ -64,7 +65,7 @@ const HomePage = () => {
             <CheckIcon width={24} />
           </button>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 };

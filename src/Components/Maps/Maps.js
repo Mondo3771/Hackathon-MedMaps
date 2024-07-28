@@ -5,6 +5,7 @@ import { Bottom,Check } from './Maps.styles';
 import { clinics,hospitals } from '../../MockData/Arrays';
 import Aside from '../../Aside/Aside';
 import News from '../News/News';
+import ProfileComp from '../ProfileComp/ProfileComp';
 
 const containerStyle = {
     width: 'max-width',
@@ -133,7 +134,9 @@ const [origin, setOrigin]=useState(null);
                     Distance:results.routes[0].legs[0].distance.text,
                     Duration:results.routes[0].legs[0].duration.text,
                     Public:array[i].public,
-                    address:array[i].address
+                    address:array[i].address,
+                    Specialties:array[i].Specialties,
+                    tel:array[i].tel
                 })
 
             } catch (error) {
@@ -157,7 +160,9 @@ const [origin, setOrigin]=useState(null);
                     Distance:results.routes[0].legs[0].distance.text,
                     Duration:results.routes[0].legs[0].duration.text,
                     Public:hospitals[i].public,
-                    address:hospitals[i].address
+                    address:hospitals[i].address,
+                    Specialties:array[i].Specialties,
+                    tel:array[i].tel
                 })
 
             } catch (error) {
@@ -286,8 +291,7 @@ const [origin, setOrigin]=useState(null);
             </Check>
             <Bottom>
                 {clicked && routeData? <Aside routes={isChecked?routeHosData:routeData} calculate={calcRoute} checked={isChecked}/>:null}
-                <News></News>
-
+                {/* <News></News> */}
                 
                 </Bottom>
             
