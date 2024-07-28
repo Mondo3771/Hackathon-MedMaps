@@ -2,13 +2,13 @@
 import Header from "../../Components/Header/Header";
 //styled components
 import "./ClinicProfile.css";
-import { fetchLocalStroge, setLocalStroge } from "../../Helpers/helpers";
+import { fetchLocalStorage, setLocalStorage } from "../../Helpers/helpers";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { clinics } from "../../MockData/Arrays";
 
 const ClinicProfile = () => {
-  const clinicFetch = fetchLocalStroge({ key: "Clinic" }) ?? clinics[2];
+  const clinicFetch = fetchLocalStorage({ key: "Clinic" }) ?? clinics[2];
   const [clinic, setClinic] = useState(clinicFetch);
   const [specialties, setSpecialties] = useState(
     clinicFetch.Specialties.join()
