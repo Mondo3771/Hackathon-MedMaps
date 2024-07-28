@@ -20,8 +20,6 @@ const ClinicProfile = () => {
 
   const [emergency, setEmergency] = useState(clinicFetch.emergency);
 
-  //   setLocalStroge({key:"Clinic", value: clinics[2]})
-
   return (
     <section className="clinicProfilePage">
       <Header />
@@ -152,6 +150,13 @@ const ClinicProfile = () => {
             className="capacitiesInput"
             list="capacities"
             name="capacity"
+            onChange={(e) => {
+              setClinic(() => {
+                let temp = clinic;
+                temp.capacity = e.target.value;
+                return temp;
+              });
+            }}
           />
           <datalist id="capacities">
             <option> 0 % </option>
@@ -193,7 +198,7 @@ const ClinicProfile = () => {
               placeholder={clinic.webiste}
               editable={editCt}
               type="text"
-              className={!editCt ? "input inputInEdit": "input"}
+              className={!editCt ? "input inputInEdit" : "input"}
               onChange={(e) =>
                 setClinic(() => {
                   let temp = clinic;
@@ -210,7 +215,7 @@ const ClinicProfile = () => {
               placeholder={clinic.email}
               editable={editCt}
               type="email"
-              className={!editCt ? "input inputInEdit": "input"}
+              className={!editCt ? "input inputInEdit" : "input"}
               onChange={(e) =>
                 setClinic(() => {
                   let temp = clinic;
@@ -254,9 +259,9 @@ const ClinicProfile = () => {
                 temp.emergency = emergency;
                 return temp;
               });
-              setEditCt(false)
-              setEditSp(false)  
-              setAnyChange(false)
+              setEditCt(false);
+              setEditSp(false);
+              setAnyChange(false);
             }}
           >
             Save
@@ -266,9 +271,9 @@ const ClinicProfile = () => {
           <button
             className="saveButton"
             onClick={() => {
-              setEditCt(false)
-              setEditSp(false)  
-              setAnyChange(false)
+              setEditCt(false);
+              setEditSp(false);
+              setAnyChange(false);
             }}
           >
             Cancel
