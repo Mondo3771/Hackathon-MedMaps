@@ -4,6 +4,7 @@ import Maps from "../Components/Maps/Maps";
 
 import Header from "../Components/Header/Header";
 import { CheckIcon } from "@heroicons/react/24/solid";
+// import { fetchLocalStorage } from "../helpers/helpers.js";
 import { fetchLocalStorage } from "../Helpers/helpers";
 import ProfileComp from "../Components/ProfileComp/ProfileComp";
 
