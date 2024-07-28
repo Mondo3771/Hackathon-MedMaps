@@ -11,6 +11,7 @@ import ClinicProfile from "./Pages/ClinicProfile/ClinicProfile";
 // import { fetchLocalStorage, setLocalStorage } from './helpers/helpers';
 
 
+import ProfileComp from "./Components/ProfileComp/ProfileComp";
 
 function App() {
   
