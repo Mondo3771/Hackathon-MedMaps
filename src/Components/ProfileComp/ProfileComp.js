@@ -3,6 +3,7 @@ import {
   UserCircleIcon,
   BellIcon,
   IdentificationIcon,
+  InboxIcon,
 } from "@heroicons/react/24/outline";
 import { clinics } from "../../MockData/Arrays.js";
 import {
@@ -15,6 +16,18 @@ import {
 } from "./ProfileComp.styles.js";
 
 const ProfileComp = () => {
+  const getColorForCapacity = (capacity) => {
+    const percentage = parseInt(capacity);
+    if (percentage <= 25) return "green";
+    if (percentage <= 50) return "orange";
+    if (percentage <= 75) return "red";
+    return "darkred";
+  };
+
+  function handleSectionClick() {
+    // Handle the click event, e.g., navigate to the announcements page
+    console.log("Section clicked");
+  }
   return (
     <div>
       {clinics
@@ -22,9 +35,18 @@ const ProfileComp = () => {
         .map((clinic) => (
           <Container key={clinic.id}>
             <Section>
-              <SectionTitle>
+              <SectionTitle
+                style={{
+                  cursor: "pointer",
+                  color: "#333",
+                  transition: "color 0.3s ease",
+                }}
+                onClick={() => handleSectionClick()}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#a3bb97")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#333")}
+              >
                 <div className="title">
-                  <BellIcon width={35} />
+                  <InboxIcon width={35} />
                   <h3>Announcements</h3>
                 </div>
               </SectionTitle>
@@ -61,6 +83,24 @@ const ProfileComp = () => {
                 ) : (
                   <ListItem>No specializations listed</ListItem>
                 )}
+              </List>
+            </Section>
+            <Section>
+              <SectionTitle>
+                <div className="title">
+                  <BellIcon width={40} />
+                  <h3>Real Time Notifications</h3>
+                </div>
+              </SectionTitle>
+              <List>
+                <ListItem
+                  style={{ color: getColorForCapacity(clinic.capacity) }}
+                >
+                  Capacity: {clinic.capacity}
+                </ListItem>
+                <ListItem>
+                  Emergency Rooms: {clinic.emergencyRooms ? "Yes" : "No"}
+                </ListItem>
               </List>
             </Section>
           </Container>

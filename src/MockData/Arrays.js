@@ -13,6 +13,8 @@ const clinics = [
     open24Hours: false,
     email: null,
     website: null,
+    emergencyRooms: true,
+    capacity: "25%",
   },
   {
     id: 2,
@@ -28,6 +30,8 @@ const clinics = [
     open24Hours: false,
     email: null,
     website: null,
+    emergencyRooms: true,
+    capacity: "50%",
   },
   {
     id: 3,
@@ -51,6 +55,8 @@ const clinics = [
     open24Hours: false,
     email: null,
     website: null,
+    emergencyRooms: false,
+    capacity: "100%",
   },
   {
     id: 4,
