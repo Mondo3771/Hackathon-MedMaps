@@ -12,7 +12,7 @@ export const Wrapper = styled.header`
 
 export const Section = styled.div`
   /* /* position: fixed; */
-  z-index: 9999; */
+  /* z-index: 9999; */ 
   width: 100vw;
   background-color: #f4f4f4;
   display: flex;

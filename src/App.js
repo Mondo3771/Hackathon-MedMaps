@@ -29,12 +29,14 @@ function App() {
     );
   };
   const Profile = () => {
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    const { user, isAuthenticated, isLoading } = useAuth0();//admin
     console.log(user);
     if (isAuthenticated && user.sub === process.env.REACT_APP_ADMIN_SUB){
       // SHOULD REDIRECT ME TO THE ADMIN PAGE
       console.log("Take me to Admin Page");
     }
+    else if(isAuthenticated){}//clinic
+    else{}
     if (isLoading) {
       return <div>Loading ...</div>;
     }
@@ -51,27 +53,13 @@ function App() {
   };
  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to relo d.
-        </p>
-        {/* <button onClick={UpdateClinic}>Call API</button> */}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Reac
-        </a>
-        <LoginButton />
-        <LogoutButton />
-        <Profile />
+  // <> <LoginButton />
+  // <LogoutButton />
+  // <Profile /></>
+  <Maps></Maps>
+       
         
-      </header>
-    </div>
+     
   );
 }
 
