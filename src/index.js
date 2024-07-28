@@ -9,7 +9,6 @@ import reportWebVitals from './reportWebVitals';
 import NewPage from './Sign Up page/CreateClinic';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-console.log(process.env.REACT_APP_AUTH0_CLIENT_ID);
 root.render(
   <React.StrictMode>
     <Auth0Provider
