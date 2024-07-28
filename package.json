@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
+    "mssql": "^11.0.1",
     "node-jose": "^2.2.0",
     "path-browserify": "^1.0.1",
     "react": "^18.3.1",
