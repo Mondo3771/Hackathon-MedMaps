@@ -183,7 +183,7 @@ context.res={
         console.log(err);
         context.res = {
             status: 500,
-            body: {error: err,
+            body: {error: err.message,
             message: "Error while processing your request"}
         };
     } finally {
