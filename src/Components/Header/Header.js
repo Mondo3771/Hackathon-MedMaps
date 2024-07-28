@@ -4,7 +4,7 @@ import logo from "../Header/logo.svg";
 import { Wrapper, Section } from "./Header.styles.js";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
-import { setLocalStorage,fetchLocalStorage } from "../../Helpers/helpers.js";
+// import { setLocalStorage,fetchLocalStorage } from "../../Helpers/helpers.js";
 import ClinicProfile from "../../Pages/ClinicProfile/ClinicProfile.js";
 import { NavLink, useNavigate } from "react-router-dom";
 
