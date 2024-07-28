@@ -17,6 +17,7 @@ jobs:
     env: 
       REACT_APP_AUTH0_DOMAIN: ${{secrets.REACT_APP_AUTH0_DOMAIN}}
       REACT_APP_AUTH0_CLIENT_ID: ${{secrets.REACT_APP_AUTH0_CLIENT_ID}}
+      REACT_APP_ADMIN_SUB: ${{secrets.REACT_APP_ADMIN_SUB}}
     steps:
       - uses: actions/checkout@v3
         with:
