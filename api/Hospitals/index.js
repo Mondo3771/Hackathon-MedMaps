@@ -1,9 +1,11 @@
 const { sql, config } = require('../dbconfig');
+const axios = require('axios');
 
 module.exports = async function (context, req) {
     try {
     const pool = await sql.connect(config);
     let result="";
+    
     switch (req.method) {
         case 'GET':
           
@@ -22,67 +24,94 @@ module.exports = async function (context, req) {
           console.log('Handling GET request');
           break;
     case 'POST':
-    // Handle PUT request
-    // console.log('Handling PUT request');
-    const clinicData = req.body;
-
-    result = await pool.request()
-        .input('name', sql.VarChar(255), clinicData.name)
-        .input('address', sql.VarChar(255), clinicData.address)
-        .input('tel', sql.VarChar(50), clinicData.tel)
-        .input('openingTime', sql.Time, new Date(`1970-01-01T${clinicData.openingTime}Z`))
-        .input('closingTime', sql.Time, new Date(`1970-01-01T${clinicData.closingTime}Z`))
-        .input('isClinic', sql.Bit, clinicData.isClinic)
-        .input('public', sql.Bit, clinicData.public)
-        .input('open24Hours', sql.Bit, clinicData.open24Hours)
-        .input('email', sql.VarChar(255), clinicData.email)
-        .input('website', sql.VarChar(255), clinicData.website)
-        .input('key',sql.NVarChar(255),clinicData.key)
+        const token = req.headers['Authorization'];
+        result = await pool.request()
+        .input('key', sql.VarChar(255), token)
         .query(`
-                INSERT INTO Clinic (
-               
-                    name, 
-                    address, 
-                    tel, 
-                    openingTime,
-                    closingTime,
-                    isClinic, 
-                    [public], 
-                    open24Hours, 
-                    email, 
-                    website,
-                    [key]
-                ) VALUES (
-                   @name, 
-                    @address, 
-                    @tel, 
-                    @openingTime,
-                    @closingTime,
-                    @isClinic, 
-                    @public, 
-                    @open24Hours, 
-                    @email, 
-                    @website,
-                    @key
-                );
-                SELECT SCOPE_IDENTITY() AS id;
-            `);
-    console.log(result);
-    const clinicId =result.recordset[0].id;
-    console.log(clinicId);
-    const specialties = clinicData.Specialties.split(",");
-    for (let specialty of specialties) {
-        await pool.request()
-            .input('clinicId', sql.Int, clinicId)
-            .input('specialty', sql.VarChar(255), specialty.trim())
-            .query(`INSERT INTO Specialty (clinicId, specialty) 
-                    VALUES (@clinicId, @specialty);`);
-    }
-    context.res = {
-        status: 200,
-        body: "Clinic and specialties added successfully"
-    };
-    break;
+        select * from Admin where [key] = @key
+        `)
+        if(result.recordset.len != 0){
+            const clinicData = req.body;
+      console.log(typeof process.env.AUTH0_MANAGEMENT_API_TOKEN);
+      const t = process.env.AUTH0_MANAGEMENT_API_TOKEN;
+      const mtoken = t.trim();
+            // Create a new user in Auth0
+            const auth0Response = await axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users`, {
+                connection: 'Username-Password-Authentication', // Replace with your connection name
+                email: clinicData.Email,
+                password: clinicData.Password,
+                username: clinicData.Name.split(' ').join(''),
+                user_metadata: { /* Any additional user metadata */ }
+            }, {
+                headers: { authorization: `Bearer ${mtoken}` }
+            });
+            const auth0UserId = auth0Response.data.user_id;
+            console.log(auth0UserId);
+            console.log(clinicData.openingTime);
+            result = await pool.request()
+                .input('name', sql.VarChar(255), clinicData.Name)
+                .input('address', sql.VarChar(255), clinicData.Address)
+                .input('tel', sql.VarChar(50), clinicData.tel)
+                .input('openingTime', sql.Time, new Date(`1970-01-01T${clinicData.OpeningTime}Z`))
+                .input('closingTime', sql.Time, new Date(`1970-01-01T${clinicData.ClosingTime}Z`))
+                .input('isClinic', sql.Bit, clinicData.isClinic)
+                .input('public', sql.Bit, clinicData.public)
+                .input('open24Hours', sql.Bit, clinicData.Open24Hours)
+                .input('email', sql.VarChar(255), clinicData.Email)
+                .input('website', sql.VarChar(255), clinicData.Website)
+                .input('key',sql.NVarChar(255),auth0UserId)
+                .query(`
+                        INSERT INTO Clinic (
+                            name, 
+                            address, 
+                            tel, 
+                            openingTime,
+                            closingTime,
+                            isClinic, 
+                            [public], 
+                            open24Hours, 
+                            email, 
+                            website,
+                            [key]
+                        ) VALUES (
+                            @name, 
+                            @address, 
+                            @tel, 
+                            @openingTime,
+                            @closingTime,
+                            @isClinic, 
+                            @public, 
+                            @open24Hours, 
+                            @email, 
+                            @website,
+                            @key
+                        );
+                        SELECT SCOPE_IDENTITY() AS id;
+                    `);
+            console.log(result);
+            const clinicId = result.recordset[0].id;
+            console.log(clinicId);
+            const specialties = clinicData.Specialties.split(",");
+            for (let specialty of specialties) {
+                await pool.request()
+                    .input('clinicId', sql.Int, clinicId)
+                    .input('specialty', sql.VarChar(255), specialty.trim())
+                    .query(`INSERT INTO Specialty (clinicId, specialty) 
+                            VALUES (@clinicId, @specialty);`);
+            }
+
+            context.res = {
+                status: 200,
+                body: "Clinic and specialties added successfully"
+            };
+        }
+        else{
+            context.res ={
+                status :200,
+                body:"Incorrect Sub"
+            }
+        }
+        break;
         case 'PUT':
             const Data = req.body;
             result = await pool.request()
