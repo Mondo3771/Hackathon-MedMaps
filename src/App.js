@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from 'react-router-dom';
 
 // in your render method:
 
@@ -29,7 +28,7 @@ function App() {
   const Profile = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
     console.log(user);
-    if (isAuthenticated && user.sub == process.env.REACT_APP_ADMIN_SUB){
+    if (isAuthenticated && user.sub === process.env.REACT_APP_ADMIN_SUB){
       // SHOULD REDIRECT ME TO THE ADMIN PAGE
       console.log("Take me to Admin Page");
     }

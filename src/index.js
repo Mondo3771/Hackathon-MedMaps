@@ -20,7 +20,7 @@ root.render(
       }}
     >
       <Router>
-        <App />
+        <NewPage />
       </Router>
     </Auth0Provider>
   </React.StrictMode>

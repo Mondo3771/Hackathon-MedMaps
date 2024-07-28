@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './CreateClinic.css';
+import { useAuth0 } from "@auth0/auth0-react";
+import { AddAHospital } from '../Apicalls';
 
 const CreateClinic = () => {
+  const {user} = useAuth0();
+
   const [formState, setFormState] = useState({
     Name: '',
     Address: '',
@@ -11,6 +15,7 @@ const CreateClinic = () => {
     Website: '',
     Specialties:'',
     Email: '',
+    Password: '',
     Open24Hours: false,
     isClinic: false,
     public: false,
@@ -26,7 +31,7 @@ const CreateClinic = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    formState["key"] = "Key124";
+    AddAHospital(user.sub, formState);
     console.log(formState);
   };
 
@@ -34,14 +39,14 @@ const CreateClinic = () => {
     <form onSubmit={handleSubmit} className="form">
       {Object.keys(formState).map((field, index) => (
         <div key={index} className="form-field">
-         <input
-        type={field === 'isClinic' || field === 'public' || field === 'Open24Hours' ? 'checkbox' : 'text'}
-        name={field}
-        value={formState[field]}
-        onChange={handleChange}
-        placeholder={field}
-        className="input"
-        required
+        <input
+  type={field === 'Password' ? 'password' : (field === 'isClinic' || field === 'public' || field === 'Open24Hours' ? 'checkbox' : 'text')}
+  name={field}
+  value={formState[field]}
+  onChange={handleChange}
+  placeholder={field}
+  className="input"
+  required={field !== 'isClinic' && field !== 'public' && field !== 'Open24Hours'}
 />
           {(field === 'isClinic' || field === 'public' || field === 'Open24Hours') && <label className="label">{field}</label>}
         </div>
