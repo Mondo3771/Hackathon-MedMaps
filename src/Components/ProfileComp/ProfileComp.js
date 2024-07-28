@@ -15,7 +15,7 @@ import {
   ListItem,
 } from "./ProfileComp.styles.js";
 
-const ProfileComp = () => {
+const ProfileComp = ({clinic}) => {
   const getColorForCapacity = (capacity) => {
     const percentage = parseInt(capacity);
     if (percentage <= 25) return "green";
@@ -30,10 +30,12 @@ const ProfileComp = () => {
   }
   return (
     <div>
-      {clinics
-        .filter((clinic) => clinic.id === 3)
-        .map((clinic) => (
+      {/* {clinics
+        // .filter((clinic) => clinic.id === 4)
+        .map((clinic) => ( */}
           <Container key={clinic.id}>
+            <h1>{clinic.name}</h1>
+            <p></p>
             <Section>
               <SectionTitle
                 style={{
@@ -104,7 +106,6 @@ const ProfileComp = () => {
               </List>
             </Section>
           </Container>
-        ))}
     </div>
   );
 };

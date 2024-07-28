@@ -20,9 +20,9 @@ root.render(
         redirect_uri: window.location.origin,
       }}
     >
-      <Router>
+      {/* <Router> */}
         <App />
-      </Router>
+      {/* </Router> */}
     </Auth0Provider>
   </React.StrictMode>
 );

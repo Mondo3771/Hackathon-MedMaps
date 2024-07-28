@@ -2,21 +2,31 @@ import { MapPinIcon } from "@heroicons/react/24/solid";
 import "./Aside.css";
 
 import { clinics } from "../MockData/Arrays";
+import ProfileComp from "../Components/ProfileComp/ProfileComp";
+import { useState } from "react";
 
 
 const Aside = ({routes,calculate,checked}) => {
   console.log(<MapPinIcon />);
+  const[clicked,setClicked]=useState(null);
+  const button=(addy)=>{
+    calculate(addy.address);
+    setClicked(addy)
+
+  }
   return (
+    <>
     <aside className="hello">
                       <h1>{checked?'Hospitals near me':'Clinics near me'}</h1>
 
       {routes.map((clinic, index) => (
+         <>
         <div
           key={index}
           className="clinicCard"
           // Onclick go to profile page with input parameter clinic
           // onClick={() => console.log(clinic)}
-          onClick={() => calculate(clinic.address)}
+          onClick={()=>button(clinic)}
 
      
         >
@@ -42,8 +52,11 @@ const Aside = ({routes,calculate,checked}) => {
             </div>
           </section>
         </div>
+       </>
       ))}
     </aside>
+            {clicked?<ProfileComp clinic={clicked}></ProfileComp>:null}
+            </>
   );
 };
 
