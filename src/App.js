@@ -20,9 +20,27 @@ import { Route,RouterProvider } from 'react-router-dom';
 import ProfileComp from "./Components/ProfileComp/ProfileComp";
 import Header from "./Components/Header/Header";
 import CreateClinic from "./Sign Up page/CreateClinic";
+import Header from "./Components/Header/Header";
+import CreateClinic from "./Sign Up page/CreateClinic";
 
 function App() {
   
+
+  const router = createBrowserRouter(
+    createRoutesFromChildren(
+      //
+      <Route path={'/'}>
+          <Route  index element={<HomePage/>} />
+          <Route  path={'/CreateClinic'} element={<CreateClinic/>} />
+          <Route  path={'/Profile'} element={<ClinicProfile/>} />
+
+
+      </Route>
+      
+
+      
+    )
+  )
 
   const router = createBrowserRouter(
     createRoutesFromChildren(
@@ -44,6 +62,16 @@ function App() {
   // <> <LoginButton />
   // <LogoutButton />
   // <Profile /></>
+  // <>
+  // <Header></Header>
+  // <HomePage></HomePage></>
+  // <Router>
+  //   <Switch>
+  //     <Route path="/" exact component={HomePage} />
+  //     </Switch>
+  // </Router>
+  <RouterProvider router={router}></RouterProvider>
+  
   // <>
   // <Header></Header>
   // <HomePage></HomePage></>

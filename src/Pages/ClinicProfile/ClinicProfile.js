@@ -12,8 +12,14 @@ const ClinicProfile = () => {
 
   const clinicFetch = temp
 
+
+  let temp = fetchLocalStorage({ key: "Clinic" }) ?? clinics[2];
+
+  const clinicFetch = temp
+
   const [clinic, setClinic] = useState(clinicFetch);
   const [specialties, setSpecialties] = useState(
+    clinicFetch.Specialties
     clinicFetch.Specialties
   );
   const [editSp, setEditSp] = useState(false);
@@ -22,6 +28,43 @@ const ClinicProfile = () => {
   const [anyChange, setAnyChange] = useState(false);
 
   const [emergency, setEmergency] = useState(clinicFetch.emergency);
+
+
+  const UpdateAHospital = (data) => {
+    fetch('/api/Hospitals',{
+      method:'PUT',
+      headers:{
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify(data),
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch((error)=> console.error('Error:',error));
+    }
+
+    //  data = {
+//   clinicId: 4,
+//   Capacity: '100',
+//   Beds: 50,
+//   EmergencyRooms: true,
+//   Ailment: "Common Cold"
+// };
+
+ const UpdateClinic = (data) => {
+  fetch(`/api/DailyUpdates`, {
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data), 
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch((error)=> {
+      console.error("Error:",error);
+  })
+  }
 
 
   const UpdateAHospital = (data) => {
@@ -132,6 +175,7 @@ const ClinicProfile = () => {
                   setClinic(() => {
                     let temp = clinic;
                     temp.Specialties = specialties
+                    temp.Specialties = specialties
                     console.log(temp);
                     return temp;
                   });
@@ -143,6 +187,7 @@ const ClinicProfile = () => {
             </section>
           ) : (
             <ul className="list">
+              {clinic.Specialties.split(",").map((s, index) => (
               {clinic.Specialties.split(",").map((s, index) => (
                 <li key={index}>{s}</li>
               ))}
@@ -177,6 +222,7 @@ const ClinicProfile = () => {
               disable={!emergency}
               onClick={() => {
 
+
                 setEmergency(false);
                 setAnyChange(true);
               }}
@@ -192,6 +238,7 @@ const ClinicProfile = () => {
             list="capacities"
             name="capacity"
             onChange={(e) => {
+              setAnyChange(true)
               setAnyChange(true)
               setClinic(() => {
                 let temp = clinic;
@@ -300,11 +347,23 @@ const ClinicProfile = () => {
                 let temp = clinic;
                 temp.emergency = emergency;
                 temp.Specialties = specialties
+                temp.Specialties = specialties
                 return temp;
               });
               setEditCt(false);
               setEditSp(false);
               setAnyChange(false);
+          
+              console.log(clinic)
+              UpdateAHospital(clinic);
+              UpdateClinic({
+                clinicId: clinic.id,
+                  Capacity: clinic.capacity,
+                  Beds: 100,
+                  EmergencyRooms: emergency,
+                  Ailment: "Nothing"
+
+              })
           
               console.log(clinic)
               UpdateAHospital(clinic);
@@ -328,6 +387,7 @@ const ClinicProfile = () => {
               setEditCt(false);
               setEditSp(false);
               setAnyChange(false);
+
 
             }}
           >
