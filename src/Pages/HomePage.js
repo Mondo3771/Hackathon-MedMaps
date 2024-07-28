@@ -18,6 +18,8 @@ const HomePage = () => {
 
 
   return (
+    <>
+    <Header></Header>
     <main className="homepage">
       <Maps></Maps>
       {/*clinics only */}
@@ -66,7 +68,8 @@ const HomePage = () => {
           </button>
         </div>
       </section> */}
-    </main>
+    </main>    </>
+
   );
 };
 

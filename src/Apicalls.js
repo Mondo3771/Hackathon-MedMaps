@@ -103,8 +103,10 @@ export const UpdateAHospital = (data) => {
     body:JSON.stringify(data),
   })
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => {console.log(data);
+return data;})
   .catch((error)=> console.error('Error:',error));
+
 }
 // this is what it should look like
 // data = {

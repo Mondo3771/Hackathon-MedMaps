@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import './CreateClinic.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import { AddAHospital } from '../Apicalls';
+import { useNavigate } from 'react-router-dom';
+
 
 const CreateClinic = () => {
   const {user} = useAuth0();
+  const navigate=useNavigate();
 
   const [formState, setFormState] = useState({
     Name: '',
@@ -31,8 +34,11 @@ const CreateClinic = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    AddAHospital(user.sub, formState);
-    console.log(formState);
+   AddAHospital(user.sub, formState);
+   navigate('/');
+
+
+
   };
 
  return (

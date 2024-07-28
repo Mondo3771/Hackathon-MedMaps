@@ -4,7 +4,7 @@ const clinics = [
     name: "CBD Health Office",
     address:
       "CJ Cronjé Building, 6th Floor South Wing, 80 Loveday Street, Cnr Plein Street, Johannesburg",
-    tel: ["011 376 8525", "011 376 8554"],
+    tel: ["011 376 8525"],
     openingTime: "8:00 AM",
     closingTime: "4:30 PM",
     Specialties: [], // Not provided

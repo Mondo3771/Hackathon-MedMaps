@@ -6,6 +6,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Maps from './Components/Maps/Maps';
 import HomePage from "./Pages/HomePage";
 import ClinicProfile from "./Pages/ClinicProfile/ClinicProfile";
+import { BrowserRouter as Router, Route, createBrowserRouter,  createRoutesFromChildren, RouterProvider } from 'react-router-dom';
+
 
 
 // import { fetchLocalStorage, setLocalStorage } from './helpers/helpers';
@@ -13,19 +15,41 @@ import ClinicProfile from "./Pages/ClinicProfile/ClinicProfile";
 
 import ProfileComp from "./Components/ProfileComp/ProfileComp";
 import Header from "./Components/Header/Header";
+import CreateClinic from "./Sign Up page/CreateClinic";
 
 function App() {
   
 
+  const router = createBrowserRouter(
+    createRoutesFromChildren(
+      //
+      <Route path={'/'}>
+          <Route  index element={<HomePage/>} />
+          <Route  path={'/CreateClinic'} element={<CreateClinic/>} />
+          <Route  path={'/Profile'} element={<ClinicProfile/>} />
 
+
+      </Route>
+      
+
+      
+    )
+  )
  
   return (
   // <> <LoginButton />
   // <LogoutButton />
   // <Profile /></>
-  <>
-  <Header></Header>
-  <HomePage></HomePage></>
+  // <>
+  // <Header></Header>
+  // <HomePage></HomePage></>
+  // <Router>
+  //   <Switch>
+  //     <Route path="/" exact component={HomePage} />
+  //     </Switch>
+  // </Router>
+  <RouterProvider router={router}></RouterProvider>
+  
        
         
      
