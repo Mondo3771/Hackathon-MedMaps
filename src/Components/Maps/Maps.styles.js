@@ -47,18 +47,18 @@ input {
 
     input:before {
       content: "Clinic";
-      color: #d93816;
-      border-color: #ff6645;
-      background: #ffddcc;
+      color: black;
+      border-color: black;
+      background: #ccd9c5;
     }
 
     input:after {
       left: auto;
       right: 5px;
       content: "Hospital";
-      border-color: #34a84d;
-      color: #30ba4e;
-      background: #ccffbb;
+      border-color: black;
+      color: black;
+      background: #ccd9c5;
       opacity: 0.4;
     }
 

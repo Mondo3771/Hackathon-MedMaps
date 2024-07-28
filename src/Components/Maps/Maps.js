@@ -10,6 +10,7 @@ const containerStyle = {
     width: 'max-width',
     height: '600px',
 };
+const libraries = ['places'];
 
 
 
@@ -17,10 +18,14 @@ function Maps() {
     const [center, setCenter] = useState(null);
     const [directionsResponse, setDirectionsResponse] = useState(null);
     const [selectedRouteIndex, setSelectedRouteIndex] = useState(null);
+
     const[routeData,setRouteData]=useState([])
+    const[routeHosData,setRouteHosData]=useState([])
+
+
     const[clicked,setClicked]=useState(false)
     const inputRef = useRef();
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(true);
 
 
 
@@ -49,7 +54,7 @@ const [origin, setOrigin]=useState(null);
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: 'AIzaSyCgUoQ_heIIK0FOUyzNqz8j5fL0OfFijCQ',
-        libraries: ['places'],
+        libraries:libraries,
     });
 
     const [map, setMap] = useState(null);
@@ -109,10 +114,12 @@ const [origin, setOrigin]=useState(null);
     const calculateAllRoutes = async () => {
         const directionsService = new window.google.maps.DirectionsService();
         const routes=[]
+        const routesH=[]
+        const array=clinics;
 
-        for (let i = 0; i < clinics.length; i++) {
+        for (let i = 0; i < array.length; i++) {
             try {
-                const destinationLocation = await geocodeAddress(clinics[i].address);
+                const destinationLocation = await geocodeAddress(array[i].address);
 
                 const results = await directionsService.route({
                     // origin: await geocodeAddress(originAddress),
@@ -122,11 +129,35 @@ const [origin, setOrigin]=useState(null);
                 });
                 
                 routes.push({
-                    name:clinics[i].name,
+                    name:array[i].name,
                     Distance:results.routes[0].legs[0].distance.text,
                     Duration:results.routes[0].legs[0].duration.text,
-                    Public:clinics[i].public,
-                    address:clinics[i].address
+                    Public:array[i].public,
+                    address:array[i].address
+                })
+
+            } catch (error) {
+                // console.error(error);
+            }
+        }
+        
+        for (let i = 0; i < hospitals.length; i++) {
+            try {
+                const destinationLocation = await geocodeAddress(hospitals[i].address);
+
+                const results = await directionsService.route({
+                    // origin: await geocodeAddress(originAddress),
+                    origin:center,
+                    destination: destinationLocation,
+                    travelMode: window.google.maps.TravelMode.DRIVING,
+                });
+                
+                routesH.push({
+                    name:hospitals[i].name,
+                    Distance:results.routes[0].legs[0].distance.text,
+                    Duration:results.routes[0].legs[0].duration.text,
+                    Public:hospitals[i].public,
+                    address:hospitals[i].address
                 })
 
             } catch (error) {
@@ -134,14 +165,19 @@ const [origin, setOrigin]=useState(null);
             }
         }
     
+        setRouteHosData(routesH.sort((a, b) => parseFloat(a.Distance) -parseFloat(b.Distance)));
 
         setRouteData(routes.sort((a, b) => parseFloat(a.Distance) -parseFloat(b.Distance)));
     };
+    useEffect(() => {
+
+    if (isLoaded && center) {
+        calculateAllRoutes();
+    }
+}, [center,isLoaded]);
 
     useEffect(() => {
-        if (isLoaded && center) {
-            calculateAllRoutes();
-        }
+        
          reverseGeocodeLatLng(center).then((res) => {
             const data = res
             // Use the 'data' variable here4
@@ -196,7 +232,8 @@ const [origin, setOrigin]=useState(null);
 
 
     const handleCheckboxChange = (event) => {
-      setIsChecked(event.target.checked);
+        console.log('hey', event.target.checked);
+      setIsChecked(e=>!e);
     };
 
     return (
@@ -241,14 +278,14 @@ const [origin, setOrigin]=useState(null);
            
             {/* <Aside routes={routeData}/> */}
             <Check>
+            {clicked && routeData? 
             <input type='checkbox' checked={isChecked} 
-        onChange={handleCheckboxChange}  ></input>
+        onChange={handleCheckboxChange}  ></input>:null}
 
 
             </Check>
             <Bottom>
-
-                {clicked && routeData? <Aside routes={routeData} calculate={calcRoute}/>:null}
+                {clicked && routeData? <Aside routes={isChecked?routeHosData:routeData} calculate={calcRoute} checked={isChecked}/>:null}
                 {/* <News></News> */}
 
                 

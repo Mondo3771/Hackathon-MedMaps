@@ -4,12 +4,12 @@ import "./Aside.css";
 import { clinics } from "../MockData/Arrays";
 
 
-const Aside = ({routes,calculate}) => {
+const Aside = ({routes,calculate,checked}) => {
   console.log(<MapPinIcon />);
   return (
     <aside className="hello">
-      
-      <h1>Clinics near me</h1>
+                      <h1>{checked?'Hospitals near me':'Clinics near me'}</h1>
+
       {routes.map((clinic, index) => (
         <div
           key={index}
