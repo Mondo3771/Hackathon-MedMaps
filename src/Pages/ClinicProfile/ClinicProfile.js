@@ -38,13 +38,7 @@ const ClinicProfile = () => {
     .catch((error)=> console.error('Error:',error));
     }
 
-    //  data = {
-//   clinicId: 4,
-//   Capacity: '100',
-//   Beds: 50,
-//   EmergencyRooms: true,
-//   Ailment: "Common Cold"
-// };
+
 
  const UpdateClinic = (data) => {
   fetch(`/api/DailyUpdates`, {

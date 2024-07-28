@@ -191,8 +191,7 @@ function App() {
   const clinic = fetchLocalStorage({key:"Clinic"})
   console.log(clinic)
  
-  return <><Announcements id={4}/>
-  <MakeAnnouncement clinic={clinic} ID={clinic.id}/>
+  return <><ClinicProfile />
   </>
 
 }
