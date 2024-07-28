@@ -1,19 +1,19 @@
 export const GetAllHospital = () => {
-    fetch('/api/Hospitals')
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch((error) => {
-      console.error('Error:',error);
-    })
-  }
-  export const GetAHospital = () => {
-    fetch(`/api/Hospitals?id=${1}`)
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch((error) => {
-      console.error('Error:',error);
-    })
-  }
+  fetch('/api/Hospitals')
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch((error) => {
+    console.error('Error:',error);
+  })
+}
+export const GetAHospital = () => {
+  fetch(`/api/Hospitals?id=${1}`)
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch((error) => {
+    console.error('Error:',error);
+  })
+}
 
 // // Kabelo Stuff
 //   const formatTime = (date) => {
@@ -54,13 +54,13 @@ export const GetAllHospital = () => {
 // }
 
 export const AddAHospital = (token,data)=>{
- fetch("/api/Hospitals", {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorizatoin': token
-    },
-    body: JSON.stringify(data), // replace 'data' with the actual data you want to send
+fetch("/api/Hospitals", {
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json',
+      'Authorizatoin': token
+  },
+  body: JSON.stringify(data), // replace 'data' with the actual data you want to send
 })
 .then(response => response.json())
 .then(data => console.log(data))
@@ -69,12 +69,12 @@ export const AddAHospital = (token,data)=>{
 
 // const id=4; // this is the clinic ID that we get from local storage
 export const GetNotification = (id) => {
-  fetch(`/api/Notifications?id=${id}`)
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch((error)=> {
-    console.error("Error:",error);
-  })
+fetch(`/api/Notifications?id=${id}`)
+.then(res => res.json())
+.then(data => console.log(data))
+.catch((error)=> {
+  console.error("Error:",error);
+})
 }
 
 
@@ -95,18 +95,16 @@ export const GetNotification = (id) => {
 // Specialties:"Orthopedics,Dermatology,Neurology"
 // };
 export const UpdateAHospital = (data) => {
-  fetch('/api/Hospitals',{
-    method:'PUT',
-    headers:{
-      'Content-Type': 'application/json',
-    },
-    body:JSON.stringify(data),
-  })
-  .then(res => res.json())
-  .then(data => {console.log(data);
-return data;})
-  .catch((error)=> console.error('Error:',error));
-
+fetch('/api/Hospitals',{
+  method:'PUT',
+  headers:{
+    'Content-Type': 'application/json',
+  },
+  body:JSON.stringify(data),
+})
+.then(res => res.json())
+.then(data => console.log(data))
+.catch((error)=> console.error('Error:',error));
 }
 // this is what it should look like
 // data = {
@@ -116,18 +114,18 @@ return data;})
 //   clinicId:4
 // };
 export const PostNotification = (data) => {
-  fetch(`/api/Notifications`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(data), 
-  })
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch((error)=> {
-    console.error("Error:",error);
-  })
+fetch(`/api/Notifications`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+},
+body: JSON.stringify(data), 
+})
+.then(res => res.json())
+.then(data => console.log(data))
+.catch((error)=> {
+  console.error("Error:",error);
+})
 }
 //  data = {
 //   clinicId: 4,
@@ -138,16 +136,16 @@ export const PostNotification = (data) => {
 // };
 
 export const UpdateClinic = (data) => {
-  fetch(`/api/DailyUpdates`, {
-      method: 'PUT',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data), 
-  })
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch((error)=> {
-      console.error("Error:",error);
-  })
+fetch(`/api/DailyUpdates`, {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data), 
+})
+.then(res => res.json())
+.then(data => console.log(data))
+.catch((error)=> {
+    console.error("Error:",error);
+})
 }

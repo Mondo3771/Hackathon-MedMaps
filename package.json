@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
+    "@heroicons/react": "^2.1.5",
+    "@react-google-maps/api": "^2.19.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
+    "heroicons": "^2.1.5",
     "mssql": "^11.0.1",
     "node-jose": "^2.2.0",
     "path-browserify": "^1.0.1",
@@ -15,6 +18,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.25.1",
     "react-scripts": "5.0.1",
+    "styled-components": "^6.1.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

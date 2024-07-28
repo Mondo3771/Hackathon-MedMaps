@@ -1,0 +1,30 @@
+.announcements {
+    display: flex;
+    flex-direction: column;
+    width: 750px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: auto;
+
+}
+
+.announcementCard {
+    display: flex;
+    height: 90px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    align-items: center;
+    transition:  all 150ms ease-in-out; 
+}
+.announcementCard:hover {
+    background-color: #bfbfbf;
+}
+
+.announcementInfo {
+    width: 80%;
+    padding-left: 1rem;
+}
+.announcementTime {
+    font-weight: bold;
+}

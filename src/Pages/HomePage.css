@@ -1,0 +1,46 @@
+.announcementSection {
+  margin: 40px;
+  /* border: 1px solid gray; */
+  /* padding: 5px; */
+  width: 620px;
+
+}
+
+.announcementInput {
+  width: 100%;
+  height: 200px;
+  margin: 1rem 0;
+  border: none;
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
+  font-family: inherit;
+  font-size: 1.5rem;
+  text-justify: center;
+  resize: none;
+  max-lines: 3;
+}
+
+.announcementTitle {
+  height: 40px;
+  font-family: inherit;
+  width: 450px;
+  border-radius: 10px;
+  padding-left: 3px;
+  font-size: 1rem;
+
+}
+.addButton {
+  border-radius: 50%;
+  background-color: green;
+  padding: 7px;
+  color: wheat;
+  border: none;
+  cursor: pointer;
+}
+.secondDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid gray; */
+  gap: 1rem;
+}

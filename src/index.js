@@ -6,7 +6,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
-import NewPage from './Sign Up page/CreateClinic';
+import CreateClinic from './Sign Up page/CreateClinic';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,9 +19,9 @@ root.render(
         redirect_uri: window.location.origin,
       }}
     >
-      <Router>
-        <NewPage />
-      </Router>
+      {/* <Router> */}
+        <App />
+      {/* </Router> */}
     </Auth0Provider>
   </React.StrictMode>
 );
