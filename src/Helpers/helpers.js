@@ -43,7 +43,7 @@ const setLocalStroge = ({key,value}) => {
   return localStorage.setItem(key, JSON.stringify(value));
 }
 
-const fetchLocalStroge = ({key}) => {
+const fetchLocalStorage = ({key}) => {
   return JSON.parse(localStorage.getItem(key));
 }
 export {searchFunction,formatDateTime, setLocalStroge,fetchLocalStroge}
